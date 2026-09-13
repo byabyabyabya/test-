@@ -10,31 +10,38 @@ try:
             a = int(input("введите первое число:"))
             b = int(input("введите второе число:"))
             res = add(a, b)
+            print("Результат:", res)  
         elif (operation == "-"):
             a = int(input("введите первое число:"))
             b = int(input("введите второе число:"))
             res = minus(a, b)
+            print("Результат:", res)  
         elif (operation == "*"):
             a = int(input("введите gth число:"))
             b = int(input("введите второе число:"))
-            res = umnozit(a, b)        
+            res = umnozit(a, b)   
+            print("Результат:", res)       
         elif (operation == "/"):
             a = int(input("введите первое число:"))
             b = int(input("введите второе число:"))
-            res = delit(a,b)      
+            res = delit(a,b)   
+            print("Результат:", res)     
         elif (operation == "**"):
                 a = int(input("введите первое число:"))
                 b = int(input("введите второе число:"))
-                res = power(a,b)     
+                res = power(a,b)    
+                print("Результат:", res)   
         elif (operation == "**2"):
                     a = int(input("введите число:"))
-                    res = square(a)    
+                    res = square(a) 
+                    print("Результат:", res)     
         else:
              print("произошла ошибка. возможно, стоит перестать писать околесицу")  
-        print("Результат:", res)  
     if __name__ == "__main__":
         main()
 except ZeroDivisionError:
      print("на ноль делить нельзя")
 except ValueError:
      print("это не число.")
+finally:
+     print("всё.")
