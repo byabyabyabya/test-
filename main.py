@@ -10,7 +10,7 @@ class NegativeError(Exception):
 
 def sqrt_check(a):
      if (a<0):
-          raise NegativeError("ошибка. Корень из отрицательного числа не извлечен")
+          raise NegativeError("оштбка. Корень из отрицательного числа не извлечен")
      return root(a)
 
 def main():
