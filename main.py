@@ -1,6 +1,6 @@
 from calcul_mod.arifm import add, minus, delit, umnozit
 from calcul_mod.advanced import power, square, root
-from calcul_mod.triganometry import siiin
+from calcul_mod.triganometry import siiin, cosinus
 import sys
 sys.stdout.reconfigure(encoding='utf-8')
 sys.stdin.reconfigure(encoding='utf-8')
@@ -10,14 +10,14 @@ class NegativeError(Exception):
 
 def sqrt_check(a):
      if (a<0):
-          raise NegativeError("оштбка. Корень из отрицательного числа не извлечен")
+          raise NegativeError("\n \033[43;30m оштбка. Корень из отрицательного числа не извлечен\033[0m")
      return root(a)
 
 def main():
     try:
         isEnd = False
         while (isEnd == False):
-            operation = input("введите операцию (+, -, *, /, **, **2 , **0.5, $#, ), или напишите (справка) или для получения доп. информации ")
+            operation = input("введите операцию \n \n (+, -, *, /, **, **2 , **0.5, $#,(0, ),  \n \n или напишите (справка) или для получения доп. инф.")
             a = 0
             b = 0
             res = 0
@@ -66,18 +66,25 @@ def main():
                         res = siiin(a)
                         print("Результат:", res, "  Приблизительно равно:", round(res, 3))   
                         isEnd = True
+            elif (operation == "(0" or operation == "косинус"):
+                        a = int(input("введите число:"))
+                        res = cosinus(a)
+                        print("Результат:", res, "  Приблизительно равно:", round(res, 3))   
+                        isEnd = True
             elif (operation == "справка"):
                 print("\n Команды в этом калькуляторе написаны таким образом, чтобы их удобно было вводить и на русской раскладке, и на английской, но также вы всегда можете написать команду другим способом")
                 print("Ниже будет представлен список всех доступных команд, а также их эквивалент на русском языке.")
                 print("\n\n Арифметика: \n \"+\" -- \"сложение;\"\n \"-\" -- \"вычитание;\"\n \"*\" -- \"умножение;\"\n \"/\" -- \"деление;\"\n \"**\" -- \"степень;\"\n \"**2\" -- \"квадрат;\"\n \"**0.5\" -- \"корень\"(квадратный)\n")
                 print("\n Тригонометрия: \n \"$#\" -- \"синус\"")
             else:
-                print("произошла ошибка. возможно, стоит перестать писать околесицу")  
+                print("\033[43;30m произошла ошибка. возможно, стоит перестать писать околесицу")  
     
     except ZeroDivisionError:
-        print("на ноль делить нельзя")
+        print("\n \033[43;30m на ноль делить нельзя\033[0m")
+    except KeyboardInterrupt:
+        print("\n \033[43;30m Программа остановлена.\033[0m")
     except ValueError:
-        print("это не число.")
+        print("\n \033[43;30m это не число.\033[0m")
     finally:
         print("всё")
 

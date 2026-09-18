@@ -4,3 +4,8 @@ def siiin(a):
     radians = math.radians(a)
     a = math.sin(radians)
     return a
+def cosinus(a):
+    radians = 0
+    radians = math.radians(a)
+    a = math.cos(radians)
+    return a
