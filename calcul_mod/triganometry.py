@@ -9,3 +9,8 @@ def cosinus(a):
     radians = math.radians(a)
     a = math.cos(radians)
     return a
+def tangens(a):
+    radians = 0
+    radians = math.radians(a)
+    a = math.tan(radians)
+    return a
