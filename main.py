@@ -1,6 +1,6 @@
 from calcul_mod.arifm import add, minus, delit, umnozit
 from calcul_mod.advanced import power, square, root
-from calcul_mod.triganometry import siiin, cosinus, tangens
+from calcul_mod.triganometry import siiin, cosinus, tangens, cotangens
 import sys
 sys.stdout.reconfigure(encoding='utf-8')
 sys.stdin.reconfigure(encoding='utf-8')
@@ -17,7 +17,7 @@ def main():
     try:
         isEnd = False
         while (isEnd == False):
-            operation = input("введите операцию \n \n (+, -, *, /, **, **2 , **0.5, $#,(0, !# ),  \n \n или напишите (справка) или для получения доп. инф.")
+            operation = input("введите операцию \n \n (+, -, *, /, **, **2 , **0.5, $#,(0, !#, (0!# ),  \n \n или напишите (справка) или для получения доп. инф.")
             a = 0
             b = 0
             res = 0
@@ -60,7 +60,9 @@ def main():
                 a = int(input("введите число:"))
                 res = sqrt_check(a)
                 print("Результат:", res) 
-                isEnd = True  
+                isEnd = True 
+
+            #тригономметрия 
             elif (operation == "$#" or operation == "синус"):
                 a = int(input("введите число:"))
                 res = siiin(a)
@@ -79,13 +81,21 @@ def main():
                     res = tangens(a)
                     print("Результат:", res, "  Приблизительно равно:", round(res, 3))   
                 isEnd = True
+            elif (operation == "(0!#" or operation == "котангенс"):
+                a = int(input("введите число:"))
+                if a % 180 == 0:
+                    print("ошибка. из этого числа нельзя вычислить котангенс")
+                else:
+                    res = tangens(a)
+                    print("Результат:", res, "  Приблизительно равно:", round(res, 3))   
+                isEnd = True
 
 
             elif (operation == "справка"):
                 print("\n Команды в этом калькуляторе написаны таким образом, чтобы их удобно было вводить и на русской раскладке, и на английской, но также вы всегда можете написать команду другим способом")
                 print("Ниже будет представлен список всех доступных команд, а также их эквивалент на русском языке.")
                 print("\n\n Арифметика: \n \"+\" -- \"сложение;\"\n \"-\" -- \"вычитание;\"\n \"*\" -- \"умножение;\"\n \"/\" -- \"деление;\"\n \"**\" -- \"степень;\"\n \"**2\" -- \"квадрат;\"\n \"**0.5\" -- \"корень\"(квадратный)\n")
-                print("\n Тригонометрия: \n \"$#\" -- \"синус\"\n \"(0\" -- \"косинус\"\n \"!#\" -- \"тангенс\"")
+                print("\n Тригонометрия: \n \"$#\" -- \"синус\"\n \"(0\" -- \"косинус\"\n \"!#\" -- \"тангенс\"\n \"(0!#\" -- \"котангенс\"")
             else:
                 print("\033[43;30m произошла ошибка. либо это опечатка, либо вы написали это сознательно. в таком случае,прекращайте баловаться!\033[0m")  
     

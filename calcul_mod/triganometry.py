@@ -14,3 +14,8 @@ def tangens(a):
     radians = math.radians(a)
     a = math.tan(radians)
     return a
+def cotangens(a):
+    radians = 0
+    radians = math.radians(a)
+    a = math.cos(radians) / math.sin(radians)
+    return a
