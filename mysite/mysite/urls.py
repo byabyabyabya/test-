@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from django.urls import path
 from catalog.views import home
+from django.contrib import admin
 
 def hello(request):
     return HttpResponse("""
@@ -23,8 +24,9 @@ def contacts(request):
     """)
 
 urlpatterns = [
-    path("", hello),
+    # path("", hello),
     path("about/", about),
     path("contacts/", contacts),
-    path('', home)
+    path('', home),
+    path('admin/', admin.site.urls)
 ]
