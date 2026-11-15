@@ -1,15 +1,17 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+
 from .models import Product
 
-# Create your views here.
+
 def home(request):
-    products = Product.objects.filter(price__lte=100).order_by('price', 'id')
-    lines = []
+    max_price = request.GET.get('max price','')
+    products = Product.objects.all()
+    if max_price:
+        budget = int(max_price)
+        products + products.filter(price_lte = budget)
+    return render(request, 'products_list.html', {
+        'products': products, 
+        "show_budjet": True,
+        'max_price': max_price,
 
-    for product in products:
-        lines.append(f'{product.name}-{product.price}')
-    
-    text ='\n'.join(lines) or "Товаров пока нет"
-
-    return render(request, 'products_list.html', {"products:", products})
+})
